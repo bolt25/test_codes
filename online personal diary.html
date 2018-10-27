@@ -1,0 +1,188 @@
+<html>
+<title>
+	My personal Diary
+</title>
+<style>
+dl dt
+{
+	padding:10px 10px 10px 10px;
+	font-size: 18px;
+	background: white;
+}
+#myinp {
+	margin:0;
+	border:none;
+	width:300px;
+	padding:10px;
+	float:left;
+	font-size:18px;
+}
+
+#myhidinp1
+{
+    margin:0;
+	border:none;
+	width:300px;
+	padding:10px;
+	float:left;
+	font-size:18px;
+    display:none;
+}
+#myhidinp2
+{
+    display:none;
+    margin:0;
+	border:none;
+	width:300px;
+	padding:10px;
+	float:left;
+	font-size:18px;
+}
+.header {
+	background-color: orange;
+	padding: 30px 45px;
+	color:white;
+	text-align: center;  
+}
+.header:after {
+	content:"";
+	display: table;
+	clear:both;
+}
+.addbtn {
+
+	padding: 10px;
+	width:25%;
+	background: #2673D8;
+	text-align: center;
+	float:left;
+	cursor: pointer;
+
+}
+.addbtn:hover {
+	background-color: green;
+}
+.close
+{
+	position: absolute;
+    cursor:pointer;
+	padding:8px 10px 8px 10px;      <!-- up right down left -->
+}
+.close:hover
+{
+	background-color: red;
+	color:white;
+}
+
+</style>
+
+
+<body>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<h2 style="margin:10px">My contacts</h2>
+<div id="myDIV" class="header">
+	<h2 style="margin:10px">Contacts</h2>
+	<input type="text" id="myinp" placeholder="Name....">
+	<span onclick= "unhide();" class="addbtn">Add</span><br><br><br>
+	<input type="text" id="myhidinp1" placeholder="Phone no...."><br><br><br>
+	<input type="text" id="myhidinp2" placeholder="Address....">
+	<span onclick="newelement(); hide();" class="addbtn">Done</span>
+</div>
+<dl id="myul" style="list-style-type: none">
+	<dt> Ambulance </dt>
+		<dd>108</dd>
+	
+	<dt> Police </dt>
+		<dd>100</dd>
+	
+</dl>
+
+
+<script>
+	
+	var mylist=document.getElementsByTagName("dt");
+	var i;
+	for(i=0;i<mylist.length;i++)
+	{
+		var span=document.createElement("span");
+		var txt=document.createTextNode("Delete");
+		span.className="close";
+		span.appendChild(txt);
+		mylist[i].appendChild(span);
+	}
+	var close=document.getElementsByClassName("close");
+	var i;
+	for(i=0;i<close.length;i++)
+	{
+		close[i].onclick = function()
+		{
+			var div=this.parentElement;
+			div.style.display = "none";
+		}
+	}
+	function unhide()
+	{
+		document.getElementById("myhidinp1").style.display = "block";
+		document.getElementById("myhidinp2").style.display = "block";
+		
+	}
+	function hide()
+	{
+		document.getElementById("myhidinp1").style.display = "none";
+		document.getElementById("myhidinp2").style.display = "none";
+	}
+	function newelement()
+	{
+		var dt=document.createElement("dt");
+		var inputvalue=document.getElementById("myinp").value;
+		var t=document.createTextNode(inputvalue);
+		dt.appendChild(t);
+
+		
+		var dd=document.createElement("dd");
+		var inp=document.getElementById("myhidinp1").value;
+		var t1=document.createTextNode(inp);
+		dd.appendChild(t1);
+
+		var dd1=document.createElement("dd");
+		var inp1=document.getElementById("myhidinp2").value;
+		var t2=document.createTextNode(inp1);
+		dd1.appendChild(t2);
+		
+		if(inputvalue==="")
+		{
+			alert("Pls enter name")
+		}
+		else{
+		document.getElementById("myul").appendChild(dt);
+		document.getElementById("myul").appendChild(dd);
+		document.getElementById("myul").appendChild(dd1);
+		  }
+		document.getElementById("myinp").value="";
+		document.getElementById("myhidinp1").value="";
+		document.getElementById("myhidinp2").value="";
+		
+		var mylist=document.getElementsByTagName("dt");
+	var i;
+	for(i=0;i<mylist.length;i++)
+	{
+		var span=document.createElement("span");
+		var txt=document.createTextNode("Delete");
+		span.className="close";
+		span.appendChild(txt);
+		mylist[i].appendChild(span);
+	}
+	var close=document.getElementsByClassName("close");
+	var i;
+	for(i=0;i<close.length;i++)
+	{
+		close[i].onclick = function()
+		{
+			var div=this.parentElement;
+			div.style.display = "none";
+		}
+	}
+	}
+</script>
+</body>
+</html>
